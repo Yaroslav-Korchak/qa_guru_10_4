@@ -1,4 +1,5 @@
 import math
+import random
 
 def test_greeting():
     """
@@ -21,13 +22,12 @@ def test_rectangle():
     a = 10
     b = 20
     # TODO сосчитайте периметр
-    perimeter = 0
-    perimeter = perimeter + a*2 + b*2
+    perimeter = (a+b)*2
 
     assert perimeter == 60
 
     # TODO сосчитайте площадь
-    area = 0
+    area = a*b
     assert area == 200
 
 
@@ -38,14 +38,12 @@ def test_circle():
     """
     r = 23
     # TODO сосчитайте площадь
-    area = 0
-    area += math.pi*(r**2)
+    area = math.pi*(r**2)
 
     assert area == 1661.9025137490005
 
     # TODO сосчитайте длину окружности
-    length = 0
-    length += 2*math.pi*r
+    length = 2*math.pi*r
 
     assert length == 144.51326206513048
 
@@ -55,7 +53,8 @@ def test_random_list():
     Создайте список из 10 случайных чисел от 1 до 100 (включая обе границы) и отсортируйте его по возрастанию.
     """
     # TODO создайте список
-    l = list(range(1, 101, 10))
+    l = random.sample(range(1, 101), 10)
+    l.sort()
 
 
     assert len(l) == 10
@@ -69,8 +68,7 @@ def test_unique_elements():
     """
     l = [1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 8, 9, 10, 10]
     # TODO удалите повторяющиеся элементы
-    l = set(l)
-    l = list(l)
+    l = list(set(l))
 
     assert isinstance(l, list)
     assert len(l) == 10
